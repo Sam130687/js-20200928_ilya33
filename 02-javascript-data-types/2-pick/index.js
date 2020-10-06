@@ -5,13 +5,5 @@
  * @returns {object} - returns the new object
  */
 export const pick = (obj, ...fields) => {
-  const arr = Object.entries(obj);
-  const arrNew = [];
-  const n = arr.length;
-  for (let i = 0; i < n; i++){
-    if (fields.indexOf(arr[i][0]) > -1){
-      arrNew.push(arr[i]);
-    }
-  }
-  return Object.fromEntries(arrNew);
+  return Object.fromEntries(Object.entries(obj).filter(item => { return fields.includes(item[0]);}));
 };
